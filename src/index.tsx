@@ -1,4 +1,3 @@
-// import path from 'module-alias'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { App } from './pages/App';
@@ -6,7 +5,7 @@ import * as serviceWorker from './common/serviceWorker';
 
 // path.addAlias(`~`, __dirname)
 
-console.log(__dirname)
+// console.log(__dirname)
 ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
