@@ -34,7 +34,7 @@ class WebpackConfig {
       contentBase: "./dist", // Content base
       inline: true, // Enable watch and live reload,
       compress: true,
-      host: "localhost",
+      host: "192.168.167.101",
       port: 8080,
       stats: "errors-only"
     }

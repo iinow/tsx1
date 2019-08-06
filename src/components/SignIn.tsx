@@ -12,6 +12,7 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import OAuthButton from './OAuthButton'
 
 function MadeWithLove() {
   return (
@@ -90,15 +91,21 @@ export default function SignIn() {
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign In
-          </Button>
+          <OAuthButton
+            image=""
+            name="Sign In"
+            url=""
+            resourceType={1}/>
+          <OAuthButton
+            image=""
+            name="Google Sign In"
+            url=""
+            resourceType={2}/>
+          <OAuthButton
+            image=""
+            name="Github Sign In"
+            url=""
+            resourceType={3}/>
           <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">
