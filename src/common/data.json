@@ -4,7 +4,7 @@
             "host": "kauth.kakao.com",
             "resourceId": "kakao",
             "clientId": "524d446c73e56b0e2bd64962695d5259",
-            "redirectUri": "http://192.168.167.101:8081/oauth/redirect",
+            "redirectUri": "http://192.168.167.101:8082/oauth/redirect",            
             "getAuthorizeUrl": "https://kauth.kakao.com/oauth/authorize?client_id={0}&redirect_uri={1}&response_type=code"
         }
     }
