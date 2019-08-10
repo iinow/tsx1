@@ -1,11 +1,18 @@
 {
-    "sites": {
-        "kakao": {
+    "sites": [
+        {
             "host": "kauth.kakao.com",
-            "resourceId": "kakao",
+            "resourceId": "3",
             "clientId": "524d446c73e56b0e2bd64962695d5259",
-            "redirectUri": "http://192.168.167.101:8082/oauth/redirect",            
+            "redirectUri": "http://211.215.173.198:8082/oauth/redirect",            
             "getAuthorizeUrl": "https://kauth.kakao.com/oauth/authorize?client_id={0}&redirect_uri={1}&response_type=code"
+        },
+        {
+            "host": "github.com",
+            "resourceId": "1",
+            "clientId": "e6239cb309eaaba75d98",
+            "redirectUri": "http://211.215.173.198:8082/oauth/redirect",            
+            "getAuthorizeUrl": "https://github.com/login/oauth/authorize?client_id={0}&redirect_uri={1}"
         }
-    }
+    ]
 }

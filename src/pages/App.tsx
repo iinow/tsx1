@@ -9,7 +9,6 @@ import SignIn from '../components/SignIn'
 // import '../scss/AutoScrollingBackground.scss'
 // import '../scss/TextClipBackground.scss'
 import { style } from '@material-ui/system'
-import Login from './Login'
 
 /*
 export class App extends React.Component {
@@ -88,7 +87,6 @@ export const App = () => {
   
     return (
       <>
-        <Login/>
       </>
     );
   };

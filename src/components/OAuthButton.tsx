@@ -1,31 +1,50 @@
 import * as React from 'react';
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles, createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles'
+import { purple } from '@material-ui/core/colors';
+import { RouteComponentProps, withRouter } from 'react-router-dom'
 import { RestTemplate } from '../util/RestTemplate'
 import { StringUtil } from '../util/StringUtil'
+import { ResourceType } from '../common'
 import data from '../common/data.json'
+import NewWindow from 'react-new-window'
 
 const useStyles = makeStyles(theme => ({
-    submit: {
+    root: {
       margin: theme.spacing(1, 0, 2),
       padding: theme.spacing(1)
     },
-    google: {
-        backgroundColor: '#FF0000',
-        margin: theme.spacing(1, 0, 2),
-        padding: theme.spacing(1)
-    },
-    github: {
-        backgroundColor: '#00FF00',
-        margin: theme.spacing(1, 0, 2),
-        padding: theme.spacing(1)
+}))
+
+const ButtonGithubColor = '#25292E'
+const ButtonGoogleColor = "#EA4135"
+const ButtonKakaoColor = '#FAE200'
+
+const findButtonTheme = (mainColor: string) => createMuiTheme({
+    palette: {
+        primary: {
+            "300": mainColor,
+            "500": mainColor,
+        }
     }
-}));
+})
+
+const findButton = (mainColor: string) => withStyles(theme => ({
+    root: {
+      color: theme.palette.getContrastText(mainColor),
+      backgroundColor: mainColor,
+      "&:hover": {
+        backgroundColor: mainColor
+      }
+    }
+}))(Button);
 
 export interface OAuthMeta {
-    url: string,
-    image: string,
-    name: string,
+    token: string
+    url: string
+    image: string
+    name: string
     resourceType: number
 }
 
@@ -34,35 +53,47 @@ export const OAuthButton = (meta: OAuthMeta) => {
 
     function findType(resourceType: number) {
         switch(resourceType){
-            case 1: 
-                return classes.submit
-            case 2:
-                return classes.google
-            case 3:
-                return classes.github
+            case ResourceType.GITHUB: 
+                return findButton(ButtonGithubColor)
+            case ResourceType.GOOGLE:
+                return findButton(ButtonGoogleColor)
+            case ResourceType.KAKAO:
+                return findButton(ButtonKakaoColor)
         }
     }
+
+    function findResourceType(resourceType: number){
+        return data.sites.filter((res) => {
+            if(res.resourceId == resourceType.toString())
+                return true
+            return false
+        })[0]
+    }
+
+    let resource = findResourceType(meta.resourceType)
+    let CustomButton = findType(meta.resourceType)
+
     async function onClickMetaUrl() {
-        // const req = await RestTemplate.get_KaKaoAuthorize()
         const url = StringUtil.format(
-            data.sites.kakao.getAuthorizeUrl, 
-            data.sites.kakao.clientId,
-            data.sites.kakao.redirectUri)
-        window.open(url, data.sites.kakao.resourceId, "height=600,width=400")
+            resource.getAuthorizeUrl,
+            resource.clientId,
+            resource.redirectUri)
+        // window.location.href = url
+        let openWindow = window.open(url, resource.resourceId, "height=600,width=400")
         
     }
 
     return (
         <>
-            <Button
+            <CustomButton
                 // type="submit"
                 fullWidth
                 variant="contained"
                 color="primary"
-                className={findType(meta.resourceType)}
+                className={classes.root}
                 onClick={onClickMetaUrl}>
                 {meta.name}
-            </Button>
+            </CustomButton>
         </>
     )
 }

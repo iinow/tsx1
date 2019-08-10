@@ -51,13 +51,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-interface Prop {
-  code: string
+interface Props {
+  onClickLogin: () => void;
 }
 
-export default function SignIn(prop: Prop) {
+export default function SignIn(props: Props) {
   const classes = useStyles({});
-
+  const [token, setToken] = React.useState('token')
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -66,7 +66,7 @@ export default function SignIn(prop: Prop) {
           {/* <LockOutlinedIcon /> */}
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in {prop.code}
+          Sign in
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
@@ -96,30 +96,36 @@ export default function SignIn(prop: Prop) {
             label="Remember me"
           />
           <OAuthButton
+            token={token}
             image=""
-            name="Sign In"
+            name="Github"
             url=""
             resourceType={1}/>
           <OAuthButton
+            token={token}
             image=""
-            name="Google Sign In"
+            name="Google"
             url=""
             resourceType={2}/>
           <OAuthButton
+            token={token}
             image=""
-            name="Github Sign In"
+            name="Kakao"
             url=""
             resourceType={3}/>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
+              <div onClick={props.onClickLogin}>
+                Forgot password??
+              </div>
+              {/* <Link href="/dashboard" variant="body2">
                 Forgot password?
-              </Link>
+              </Link> */}
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
+              {/* <Link href="#" variant="body2">
                 {"Don't have an account? Sign Up"}
-              </Link>
+              </Link> */}
             </Grid>
           </Grid>
         </form>

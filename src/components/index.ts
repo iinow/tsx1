@@ -1,6 +1,2 @@
-import { TodoListTemplate }  from './TodoListTemplate'
-import SignInSide from './SignInSide'
-
-module.exports = {
-    TodoListTemplate, SignInSide
-}
+export { default as TodoListTemplate }  from './TodoListTemplate'
+export { default as SignInSide } from './SignInSide'
