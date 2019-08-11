@@ -78,9 +78,7 @@ export const OAuthButton = (meta: OAuthMeta) => {
             resource.getAuthorizeUrl,
             resource.clientId,
             resource.redirectUri)
-        // window.location.href = url
-        let openWindow = window.open(url, resource.resourceId, "height=600,width=400")
-        
+        window.open(url, resource.resourceId, "height=600,width=400")
     }
 
     return (

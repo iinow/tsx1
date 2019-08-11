@@ -65,15 +65,11 @@ const LoginInner = (props: Props) => {
 
     const [token, setToken] = React.useState("token")
 
-    const onClickLogin = async () => {
-        // props.history.push("/dashboard")
-        let res = await Axios.get(`http://localhost:565`)
-        alert(res.data)
-    }
-
     window.addEventListener("message", (e) => {
-        if(e){
-            props.history.push("/dashboard")
+        if(e.data){
+            console.log(e.data)
+            alert("아시바")
+            // props.history.push("/dashboard")
         }
     })
     const classes = useStyles({});
@@ -135,9 +131,7 @@ const LoginInner = (props: Props) => {
                         resourceType={3} />
                     <Grid container>
                         <Grid item xs>
-                            <div onClick={onClickLogin}>
-                                Forgot password??
-                            </div>
+                            Forgot password??
                             {/* <Link href="/dashboard" variant="body2">
                                 Forgot password?
                                 </Link> */}

@@ -24,7 +24,8 @@ class WebpackConfig {
     this.entry = ["@babel/polyfill", "./index.tsx"]
     this.output = {
       path: path.join(basePath, "dist"),
-      filename: "bundle.js"
+      // publicPath: "dist",
+      filename: "bundle.js",
     }
   }
 
@@ -34,9 +35,10 @@ class WebpackConfig {
       contentBase: "./dist", // Content base
       inline: true, // Enable watch and live reload,
       compress: true,
-      host: "192.168.167.101",
+      host: "localhost",
       port: 8080,
-      stats: "errors-only"
+      stats: "errors-only",
+      historyApiFallback: true,
     }
   }
 
