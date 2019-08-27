@@ -67,11 +67,9 @@ const LoginInner = (props: Props) => {
 
     window.addEventListener("message", (e) => {
         const json = JSON.stringify(e.data)
-        // try{
+        if(typeof e.data == 'string'){
             console.log(json)
-        // }catch(e){
-        //     alert("왔다.")
-        // }
+        }
         // props.history.push("/dashboard")
     })
     const classes = useStyles({});
