@@ -4,7 +4,7 @@ import { Login, Redirect as redirect, Dashboard } from './pages'
 import { __RouterContext } from "react-router"
 import { ThemeProvider } from '@material-ui/styles'
 import { createBrowserHistory } from 'history'
-import RouteWithLayout from "./components/RouteWithLayout";
+import RouteWithLayout from "./common/components/RouteWithLayout";
 
 const browserHistory = createBrowserHistory()
 
@@ -16,25 +16,15 @@ export const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
-        {/* <Redirect
+        <Redirect
           exact
-          from="/dashboard"
-          to="/"
+          from="/"
+          to="/login"
         />
-        <Redirect to="/" /> */}
-        <Route exact path="/" component={Login} />
-        <Route path="/redirect" component={redirect} />
+        <Route exact path="/login" component={Login} />
+        <Route path="/oauth2" component={redirect}/>
         <Route path="/dashboard" component={Dashboard} />
       </Switch>
     </BrowserRouter>
   )
-};
-
-
-{/* <HashRouter>
-        <Switch>
-          <Route exact={true} path="/" component={Login} />
-          <Route path="/redirect" component={Redirect} />
-          <Route path="/dashboard" component={Dashboard} />
-        </Switch>
-      </HashRouter> */}
+}

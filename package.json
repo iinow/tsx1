@@ -20,7 +20,7 @@
     "superagent": "^5.1.0"
   },
   "scripts": {
-    "start": "webpack-dev-server -d --mode development --inline --hot --open",
+    "start": "webpack-dev-server -d --mode development --inline --hot --open --history-api-fallback",
     "build": "webpack  --mode development",
     "builddep": "webpack  --mode production",
     "deploy": "npm run build && rm -rf ./node_modules/gh-pages/.cache && node deploy.js"

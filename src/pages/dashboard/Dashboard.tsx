@@ -122,7 +122,7 @@ const useStyles = makeStyles(theme => ({
 
 const DashboardInner = (props: Props) => {
     const classes = useStyles({});
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = React.useState(false);
     const handleDrawerOpen = () => {
         setOpen(true);  
     };
@@ -130,7 +130,6 @@ const DashboardInner = (props: Props) => {
         setOpen(false);
     };
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-
     let schedule = SchedulerToken.getInstance()
     return (
         <div className={classes.root}>

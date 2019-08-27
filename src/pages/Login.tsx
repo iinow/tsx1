@@ -1,10 +1,10 @@
 import * as React from 'react';
-import SignIn from '../components/SignIn'
+import SignIn from '../common/components/SignIn'
 import queryString from 'query-string'
 import { LoginParam } from '../models/LoginParam'
 import { JsonUtil } from '../util/JsonUtil'
 import { __RouterContext } from 'react-router'
-import { RouteComponentProps, withRouter } from 'react-router-dom'
+import { RouteComponentProps, withRouter, Link as CLink } from 'react-router-dom'
 import useRouter from '../routes'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -19,7 +19,7 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import OAuthButton from '../components/OAuthButton'
+import OAuthButton from '../common/components/OAuthButton'
 import Axios from 'axios'
 
 function MadeWithLove() {
@@ -66,11 +66,13 @@ const LoginInner = (props: Props) => {
     const [token, setToken] = React.useState("token")
 
     window.addEventListener("message", (e) => {
-        if(e.data){
-            console.log(e.data)
-            alert("아시바")
-            // props.history.push("/dashboard")
-        }
+        const json = JSON.stringify(e.data)
+        // try{
+            console.log(json)
+        // }catch(e){
+        //     alert("왔다.")
+        // }
+        // props.history.push("/dashboard")
     })
     const classes = useStyles({});
 
@@ -129,9 +131,16 @@ const LoginInner = (props: Props) => {
                         name="Kakao"
                         url=""
                         resourceType={3} />
+                    <OAuthButton
+                        token={token}
+                        image=""
+                        name="Facebook"
+                        url=""
+                        resourceType={4} />
                     <Grid container>
                         <Grid item xs>
-                            Forgot password??
+                            <CLink to="/oauth2/redirect">Forgot password??</CLink>
+                            
                             {/* <Link href="/dashboard" variant="body2">
                                 Forgot password?
                                 </Link> */}

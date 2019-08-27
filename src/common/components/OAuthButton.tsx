@@ -4,10 +4,10 @@ import { makeStyles, withStyles, createMuiTheme } from '@material-ui/core/styles
 import { ThemeProvider } from '@material-ui/styles'
 import { purple } from '@material-ui/core/colors';
 import { RouteComponentProps, withRouter } from 'react-router-dom'
-import { RestTemplate } from '../util/RestTemplate'
-import { StringUtil } from '../util/StringUtil'
-import { ResourceType } from '../common'
-import data from '../common/data.json'
+import { RestTemplate } from '../../util/RestTemplate'
+import { StringUtil } from '../../util/StringUtil'
+import { ResourceType } from '../'
+import data from '../data.json'
 import NewWindow from 'react-new-window'
 
 const useStyles = makeStyles(theme => ({
@@ -20,6 +20,7 @@ const useStyles = makeStyles(theme => ({
 const ButtonGithubColor = '#25292E'
 const ButtonGoogleColor = "#EA4135"
 const ButtonKakaoColor = '#FAE200'
+const BUttonFacebookColor = '#4267B2'
 
 const findButtonTheme = (mainColor: string) => createMuiTheme({
     palette: {
@@ -59,6 +60,8 @@ export const OAuthButton = (meta: OAuthMeta) => {
                 return findButton(ButtonGoogleColor)
             case ResourceType.KAKAO:
                 return findButton(ButtonKakaoColor)
+            case ResourceType.FACEBOOK:
+                return findButton(BUttonFacebookColor)
         }
     }
 
@@ -76,7 +79,7 @@ export const OAuthButton = (meta: OAuthMeta) => {
     async function onClickMetaUrl() {
         const url = StringUtil.format(
             resource.getAuthorizeUrl,
-            resource.clientId,
+            // resource.clientId,
             resource.redirectUri)
         window.open(url, resource.resourceId, "height=600,width=400")
     }

@@ -19,18 +19,19 @@ export const Redirect = (props: Props) => {
     }catch(e){
         console.log(`Mapping failed: ${query}`)
     }
-    
+    console.log(JSON.stringify(param))
     React.useEffect(() => {
         window.opener.postMessage(param.code, '*')
         window.close()
     })    
 
     return (
-        <>
+        <div>
             <div>
                 redirect page
+                
             </div>
-        </>
+        </div>
     )
 }
 
