@@ -85,7 +85,7 @@ const LoginInner = (props: Props) => {
                     Sign in
                 </Typography>
                 <form className={classes.form} noValidate>
-                    <TextField
+                    {/* <TextField
                         variant="outlined"
                         margin="normal"
                         required
@@ -110,7 +110,7 @@ const LoginInner = (props: Props) => {
                     <FormControlLabel
                         control={<Checkbox value="remember" color="primary" />}
                         label="Remember me"
-                    />
+                    /> */}
                     <OAuthButton
                         token={token}
                         image=""
