@@ -21,7 +21,7 @@ export const Redirect = (props: Props) => {
     }
     console.log(JSON.stringify(param))
     React.useEffect(() => {
-        // window.opener.postMessage(param.code, '*')
+        window.opener.postMessage(param.code, '*')
         window.close()
     })    
 

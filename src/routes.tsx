@@ -21,7 +21,7 @@ export const Routes = () => {
           from="/"
           to="/login"
         />
-        <Route exact path="/login" component={Login} />
+        <Route path="/login" component={Login} />
         <Route path="/oauth2" component={redirect}/>
         <Route path="/dashboard" component={Dashboard} />
       </Switch>

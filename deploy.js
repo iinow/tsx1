@@ -1,7 +1,7 @@
 const gh = require('gh-pages')
 const path = require('path')
 
-gh.publish(path.join(__dirname, "dist"), {
+gh.publish(path.join(__dirname, "build"), {
     branch: 'gh-pages',
     repo: 'https://github.com/iinow/tsx1.git',
     remote: 'upstream',

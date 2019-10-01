@@ -1,9 +1,12 @@
-var HtmlWebpackPlugin = require("html-webpack-plugin");
-var MiniCssExtractPlugin = require("mini-css-extract-plugin");
-var webpack = require("webpack");
-var path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const webpack = require("webpack");
+const path = require("path");
+const fs = require('fs')
 
-var basePath = __dirname;
+const basePath = __dirname;
+const appDirectory = fs.realpathSync(process.cwd());
+const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
 
 class WebpackConfig {
   constructor(env, options) {
@@ -23,9 +26,13 @@ class WebpackConfig {
     }
     this.entry = ["@babel/polyfill", "./index.tsx"]
     this.output = {
-      path: path.join(basePath, "dist"),
+      path: resolveApp('build'),
+      // path: path.join(basePath, "dist"),
       // publicPath: "dist",
-      filename: "bundle.js",
+      filename: "static/js/bundle.js",
+      pathinfo: true,
+      publicPath: '/',
+      devtoolModuleFilenameTemplate: info => path.resolve(info.absoluteResourcePath),
     }
   }
 
@@ -36,7 +43,7 @@ class WebpackConfig {
       inline: true, // Enable watch and live reload,
       compress: true,
       host: "localhost",
-      port: 3000,
+      port: 3001,
       stats: "errors-only",
       publicPath: '/',
       historyApiFallback: true
