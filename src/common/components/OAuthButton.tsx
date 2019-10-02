@@ -7,7 +7,7 @@ import { RouteComponentProps, withRouter } from 'react-router-dom'
 import { RestTemplate } from '../../util/RestTemplate'
 import { StringUtil } from '../../util/StringUtil'
 import { ResourceType } from '../'
-import data from '../data.json'
+import { Config } from '../config'
 import NewWindow from 'react-new-window'
 
 const useStyles = makeStyles(theme => ({
@@ -66,7 +66,7 @@ export const OAuthButton = (meta: OAuthMeta) => {
     }
 
     function findResourceType(resourceType: number){
-        return data.sites.filter((res) => {
+        return Config.sites.filter((res) => {
             if(res.resourceId == resourceType.toString())
                 return true
             return false

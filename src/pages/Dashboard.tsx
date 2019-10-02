@@ -16,15 +16,12 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import { ChevronLeft, ChevronRight, Menu as MenuIcon } from '@material-ui/icons'
 import { Gallery, Main, Memo } from './dashboard/'
+import { Config, findIconImage } from '../common/config'
 
 const drawerWidth = 240;
 
@@ -129,7 +126,7 @@ export const Dashboard = (props: Props) => {
                 <AppBar
                     position="fixed"
                     className={clsx(classes.appBar, {
-                    [classes.appBarShift]: barOpen,
+                      [classes.appBarShift]: barOpen,
                     })}>
                     <Toolbar>
                         <IconButton
@@ -160,39 +157,32 @@ export const Dashboard = (props: Props) => {
                     }),
                     }}
                     open={barOpen}>
+                    {/* 햄버거 아이콘 펼쳤을 때 구문 */}  
                     <div className={classes.toolbar}>
                         <div className={classes.title}>아무거나 메뉴</div>
                         <IconButton onClick={handleDrawerClose}>
-                            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+                            {theme.direction === 'rtl' ? <ChevronRight /> : <ChevronLeft />}
                         </IconButton>
                     </div>
                     <Divider />
+                    {/* 좌측 메뉴 상단 */}
                     <List>
-                        {['gallery', 'memo'].map((text, index) => (
-                            <ListItem button key={text} onClick={() => handleHistoryPush(text)}>
-                              <Link to={`/dashboard/${text}`}>
-                                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                                <ListItemText primary={text} />
-                              </Link>
+                        {Config.dashboard.menuTop.map((menuItem, index) => (
+                            <ListItem button key={menuItem.name} onClick={() => handleHistoryPush(menuItem.name)}>
+                              <ListItemIcon>{findIconImage(menuItem.icon)}</ListItemIcon>
+                              <ListItemText primary={menuItem.name} />
                             </ListItem>
                         ))}
                     </List>
                     <Divider />
+                    {/* 좌측 메뉴 하단 */}
                     <List>
-                        {/* {['setting'].map((text, index) => (
-                            <ListItem button key={text} onClick={() => handleHistoryPush(text)}>
-                                <Link to={`/dashboard/${text}`}>
-                                  <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                                  <ListItemText primary={text} />
-                                </Link>
+                        {Config.dashboard.menuBottom.map((menuItem, index) => (
+                            <ListItem button key={menuItem.name} onClick={() => handleHistoryPush(menuItem.name)}>
+                                <ListItemIcon>{findIconImage(menuItem.icon)}</ListItemIcon>
+                                <ListItemText primary={menuItem.name} />
                             </ListItem>
-                        ))} */}
-                        <ListItem button key={'setting'}>
-                          <Link to={`/dashboard/setting`}>
-                            <ListItemIcon><MailIcon /></ListItemIcon>
-                            <ListItemText primary={'setting'} />
-                          </Link>
-                        </ListItem>
+                        ))}
                     </List>
                 </Drawer>
                 <main className={classes.content}>

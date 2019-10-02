@@ -28,5 +28,27 @@
             "redirectUri": "http://localhost:3000/oauth2/redirect",            
             "getAuthorizeUrl": "http://localhost:8080/oauth2/authorize/kakao?redirect_uri={0}"
         }
-    ]
+    ],
+    "dashboard": {
+        "menuTop": [
+            {
+                "name": "gallery",
+                "icon": 1
+            },
+            {
+                "name": "memo",
+                "icon": 2
+            },
+            {
+                "name": "chat",
+                "icon": 3
+            }
+        ],
+        "menuBottom": [
+            {
+                "name": "settings",
+                "icon": 4
+            }
+        ]
+    }
 }

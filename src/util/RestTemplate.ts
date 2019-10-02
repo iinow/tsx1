@@ -1,5 +1,5 @@
 import Axios, { AxiosResponse } from 'axios'
-import data from '../common/data.json'
+import { Config } from '../common/config'
 import { AuthorizeReq } from '../models/AuthorizeReq'
 import { StringUtil } from '../util/StringUtil'
 import {SchedulerToken} from '../common'

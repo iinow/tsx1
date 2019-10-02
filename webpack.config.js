@@ -43,7 +43,7 @@ class WebpackConfig {
       inline: true, // Enable watch and live reload,
       compress: true,
       host: "localhost",
-      port: 3001,
+      port: 3000,
       stats: "errors-only",
       publicPath: '/',
       historyApiFallback: true
