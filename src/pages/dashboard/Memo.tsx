@@ -2,7 +2,8 @@ import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom'
 import queryString from 'query-string'
 import { makeStyles } from '@material-ui/core/styles';
-import { Memo as ComponentMemo } from '../../common/components'
+import { Memo as ComponentMemo, MemoItemInput } from '../../common/components'
+import { MenuItem } from '../../models'
 
 const useStyles = makeStyles(theme => ({
     '@global': {
@@ -17,16 +18,25 @@ interface Props extends RouteComponentProps { }
 
 export const Memo = (props: Props) => {
     const [open, setOpen] = React.useState(true)
+    let values: Array<MenuItem> = []
+    const [list] = React.useState(values)
+    const [, updateState] = React.useState();
+    const forceUpdate = React.useCallback(() => updateState({}), []);
     const classes = useStyles({});
 
     setTimeout(() => {
         setOpen(false)
     }, 2000)
 
+    const handleAddItem = () => {
+        console.log(list)
+    }
+
     return (
         <div>
-            {[1,2,3,4,5,6,7,8,9].map((value, index) => (
-                <ComponentMemo key={index}/>
+            <MemoItemInput items={list} refresh={forceUpdate}/>
+            {list.map((value, index) => (
+                <ComponentMemo key={index} item={value}/>
             ))}
         </div>
     )

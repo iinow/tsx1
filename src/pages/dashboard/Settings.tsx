@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
 
 interface Props extends RouteComponentProps { }
 
-export const Gallery = (props: Props) => {
+export const Settings = (props: Props) => {
     const [open, setOpen] = React.useState(true)
     const classes = useStyles({});
 
@@ -24,9 +24,9 @@ export const Gallery = (props: Props) => {
 
     return (
         <div className={classes["@global"]}>
-            갤러리부분
+            설정 부분
         </div>
     )
 }
 
-export default Gallery
+export default Settings

@@ -5,6 +5,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { MenuItem } from '../../models'
 
 const useStyles = makeStyles({
     card: {
@@ -27,7 +28,11 @@ const useStyles = makeStyles({
     },
 });
 
-export default function Memo() {
+interface Props {
+  item: MenuItem
+}
+
+export default function Memo(props: Props) {
     const classes = useStyles({});
     const bull = <span className={classes.bullet}>•</span>;
   
@@ -38,6 +43,7 @@ export default function Memo() {
             Word of the Day
           </Typography>
           <Typography variant="h5" component="h2">
+            {props.item.content}
             be
             {bull}
             nev

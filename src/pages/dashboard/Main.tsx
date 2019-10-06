@@ -24,7 +24,7 @@ export const Main = (props: Props) => {
 
     return (
         <div className={classes["@global"]}>
-
+            대시보드 메인부분
         </div>
     )
 }

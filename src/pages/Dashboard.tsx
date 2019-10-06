@@ -20,7 +20,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { ChevronLeft, ChevronRight, Menu as MenuIcon } from '@material-ui/icons'
-import { Gallery, Main, Memo } from './dashboard/'
+import { Gallery, Main, Memo, Chat, Settings } from './dashboard/'
 import { Config, findIconImage } from '../common/config'
 
 const drawerWidth = 240;
@@ -102,7 +102,8 @@ export const Dashboard = (props: Props) => {
     const [progressOpen, setProgressOpen] = React.useState(true)
     const theme = useTheme();
     const classes = useStyles({});
-
+    const urlPath = `/dashboard/`
+    
     setTimeout(() => {
         setProgressOpen(false)
     }, 2000)
@@ -116,7 +117,7 @@ export const Dashboard = (props: Props) => {
     };
 
     const handleHistoryPush = (path: string) => {
-        props.history.push(`/dashboard/${path}`)
+        props.history.push(`${urlPath}${path}`)
     }
 
     return (
@@ -139,7 +140,7 @@ export const Dashboard = (props: Props) => {
                             })}>
                             <MenuIcon />
                         </IconButton>
-                        <Typography variant="h6" noWrap>
+                        <Typography variant="h6" noWrap onClick={() => handleHistoryPush(``)}>
                             Anything Develop
                         </Typography>
                     </Toolbar>
@@ -189,9 +190,11 @@ export const Dashboard = (props: Props) => {
                     <div className={classes.toolbar} />
                     {/* 대시보드 내용 컨텐츠 부분 */}
                     <Typography paragraph>
+                        <Route exact path="/dashboard" component={Main}/>
                         <Route path="/dashboard/memo" component={Memo}/>
-                        <Route path="/dashboard/main" component={Main}/>
                         <Route path="/dashboard/gallery" component={Gallery}/>
+                        <Route path="/dashboard/chat" component={Chat}/>
+                        <Route path="/dashboard/settings" component={Settings}/>
                     </Typography>  
                 </main>
             </div>
