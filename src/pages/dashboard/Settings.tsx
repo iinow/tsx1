@@ -14,13 +14,17 @@ const useStyles = makeStyles(theme => ({
 
 interface Props extends RouteComponentProps { }
 
+/**
+ * @param props 
+ * @description 설정 화면 컴포넌트
+ */
 export const Settings = (props: Props) => {
     const [open, setOpen] = React.useState(true)
     const classes = useStyles({});
+    
+    React.useEffect(() => {
 
-    setTimeout(() => {
-        setOpen(false)
-    }, 2000)
+    })
 
     return (
         <div className={classes["@global"]}>

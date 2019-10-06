@@ -6,12 +6,16 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { MenuItem } from '../../models'
+import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles({
     card: {
-      minWidth: 275,
-      maxWidth: 300,
-      margin: 20,
+      minWidth: 258,
+      maxWidth: 258,
+      minHeight: 300,
+      maxHeight: 300,
+      marginRight: 20,
+      marginBottom: 20,
       // display: 'inline'
       display: 'inline-block',
     },
@@ -39,26 +43,32 @@ export default function Memo(props: Props) {
     return (
       <Card className={classes.card}>
         <CardContent>
+          {/* 날짜 */}
           <Typography className={classes.title} color="textSecondary" gutterBottom>
-            Word of the Day
+            {1}
           </Typography>
-          <Typography variant="h5" component="h2">
+          <Divider />
+          
+          {/* 제목 */}
+          {/* <Typography variant="h5" component="h2">
             {props.item.content}
-            be
-            {bull}
-            nev
-            {bull}o{bull}
-            lent
-          </Typography>
-          <Typography className={classes.pos} color="textSecondary">
+          </Typography> */}
+
+          {/* 부제목 */}
+          {/* <Typography className={classes.pos} color="textSecondary">
             adjective
-          </Typography>
+          </Typography> */}
+
+          {/* 내용 */}
           <Typography variant="body2" component="p">
+            {props.item.content}
             well meaning and kindly.
             <br />
             {'"a benevolent smile"'}
           </Typography>
         </CardContent>
+
+        {/* 추가 버튼 */}
         <CardActions>
           <Button size="small">Learn More</Button>
         </CardActions>

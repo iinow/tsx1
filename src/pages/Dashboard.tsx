@@ -140,7 +140,7 @@ export const Dashboard = (props: Props) => {
                             })}>
                             <MenuIcon />
                         </IconButton>
-                        <Typography variant="h6" noWrap onClick={() => handleHistoryPush(``)}>
+                        <Typography component={'div'} variant={"h6"} noWrap onClick={() => handleHistoryPush(``)}>
                             Anything Develop
                         </Typography>
                     </Toolbar>
@@ -189,7 +189,7 @@ export const Dashboard = (props: Props) => {
                 <main className={classes.content}>
                     <div className={classes.toolbar} />
                     {/* 대시보드 내용 컨텐츠 부분 */}
-                    <Typography paragraph>
+                    <Typography component={'div'} paragraph>
                         <Route exact path="/dashboard" component={Main}/>
                         <Route path="/dashboard/memo" component={Memo}/>
                         <Route path="/dashboard/gallery" component={Gallery}/>

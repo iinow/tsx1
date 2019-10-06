@@ -16,6 +16,10 @@ const useStyles = makeStyles(theme => ({
 
 interface Props extends RouteComponentProps { }
 
+/**
+ * {@link https://material-ui.com/components/tabs}
+ * Vertical tabs 로 전환 예정
+*/
 export const Memo = (props: Props) => {
     const [open, setOpen] = React.useState(true)
     let values: Array<MenuItem> = []
@@ -35,9 +39,9 @@ export const Memo = (props: Props) => {
     return (
         <div>
             <MemoItemInput items={list} refresh={forceUpdate}/>
-            {list.map((value, index) => (
-                <ComponentMemo key={index} item={value}/>
-            ))}
+                {list.map((value, index) => (
+                    <ComponentMemo key={index} item={value}/>
+                ))}
         </div>
     )
 }

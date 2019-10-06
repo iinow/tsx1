@@ -17,10 +17,14 @@ interface Props extends RouteComponentProps { }
 export const Chat = (props: Props) => {
     const [open, setOpen] = React.useState(true)
     const classes = useStyles({});
+    
+    React.useEffect(() => {
 
-    setTimeout(() => {
-        setOpen(false)
-    }, 2000)
+    })
+
+    // setTimeout(() => {
+    //     setOpen(false)
+    // }, 2000)
 
     return (
         <div className={classes["@global"]}>

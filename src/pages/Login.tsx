@@ -69,8 +69,8 @@ const LoginInner = (props: Props) => {
         const json = JSON.stringify(e.data)
         if(typeof e.data == 'string'){
             console.log(json)
+            props.history.push("/dashboard")
         }
-        // props.history.push("/dashboard")
     })
     const classes = useStyles({});
 
