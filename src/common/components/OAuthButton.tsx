@@ -42,7 +42,7 @@ const findButton = (mainColor: string) => withStyles(theme => ({
 }))(Button);
 
 export interface OAuthMeta {
-    token: string
+    // token?: string
     url: string
     image: string
     name: string

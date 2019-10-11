@@ -102,7 +102,7 @@ export const Dashboard = (props: Props) => {
     const [progressOpen, setProgressOpen] = React.useState(true)
     const theme = useTheme();
     const classes = useStyles({});
-    const urlPath = `/dashboard/`
+    const urlPath = `/`
     
     setTimeout(() => {
         setProgressOpen(false)
@@ -190,11 +190,11 @@ export const Dashboard = (props: Props) => {
                     <div className={classes.toolbar} />
                     {/* 대시보드 내용 컨텐츠 부분 */}
                     <Typography component={'div'} paragraph>
-                        <Route exact path="/dashboard" component={Main}/>
-                        <Route path="/dashboard/memo" component={Memo}/>
-                        <Route path="/dashboard/gallery" component={Gallery}/>
-                        <Route path="/dashboard/chat" component={Chat}/>
-                        <Route path="/dashboard/settings" component={Settings}/>
+                        <Route exact path="/" component={Main}/>
+                        <Route path="/memo" component={Memo}/>
+                        <Route path="/gallery" component={Gallery}/>
+                        <Route path="/chat" component={Chat}/>
+                        <Route path="/settings" component={Settings}/>
                     </Typography>  
                 </main>
             </div>

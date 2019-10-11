@@ -96,19 +96,19 @@ export default function SignIn(props: Props) {
             label="Remember me"
           />
           <OAuthButton
-            token={token}
+            // token={token}
             image=""
             name="Github"
             url=""
             resourceType={1}/>
           <OAuthButton
-            token={token}
+            // token={token}
             image=""
             name="Google"
             url=""
             resourceType={2}/>
           <OAuthButton
-            token={token}
+            // token={token}
             image=""
             name="Kakao"
             url=""

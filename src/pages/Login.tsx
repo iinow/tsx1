@@ -21,6 +21,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import OAuthButton from '../common/components/OAuthButton'
 import Axios from 'axios'
+import { User } from '../models'
+import { SchedulerToken } from '../common'
 
 function MadeWithLove() {
     return (
@@ -59,17 +61,25 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-interface Props extends RouteComponentProps { }
+interface Props extends RouteComponentProps { 
+    user: User,
+}
 
 const LoginInner = (props: Props) => {
-
-    const [token, setToken] = React.useState("token")
+    React.useEffect(() => {
+        if(localStorage.getItem('auth')){
+            props.history.push('/')
+        }
+    })
 
     window.addEventListener("message", (e) => {
-        const json = JSON.stringify(e.data)
+        const json: string = JSON.stringify(e.data)
         if(typeof e.data == 'string'){
             console.log(json)
-            props.history.push("/dashboard")
+            console.log(e.data)
+            // props.user.token = json
+            localStorage.setItem('auth', e.data)
+            props.history.push("/")
         }
     })
     const classes = useStyles({});
@@ -112,25 +122,25 @@ const LoginInner = (props: Props) => {
                         label="Remember me"
                     /> */}
                     <OAuthButton
-                        token={token}
+                        // token={token}
                         image=""
                         name="Github"
                         url=""
                         resourceType={1} />
                     <OAuthButton
-                        token={token}
+                        // token={token}
                         image=""
                         name="Google"
                         url=""
                         resourceType={2} />
                     <OAuthButton
-                        token={token}
+                        // token={token}
                         image=""
                         name="Kakao"
                         url=""
                         resourceType={3} />
                     <OAuthButton
-                        token={token}
+                        // token={token}
                         image=""
                         name="Facebook"
                         url=""
