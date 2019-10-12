@@ -3,7 +3,6 @@ import useRouter from '../routes'
 import queryString from 'query-string'
 import { LoginParam } from '../models'
 import { JsonUtil } from '../util'
-import { SchedulerToken } from '../common'
 import { RouteComponentProps, withRouter } from 'react-router-dom'
 
 interface Props extends RouteComponentProps { }

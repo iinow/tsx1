@@ -2,7 +2,6 @@ import * as React from 'react';
 import { RouteComponentProps, withRouter, Route, Redirect, RouteProps } from 'react-router-dom'
 import queryString from 'query-string'
 import { User } from './models'
-import { SchedulerToken } from './common'
 type RouteComponent = React.StatelessComponent<RouteComponentProps<{}>> | React.ComponentClass<any>
 
 /**
@@ -10,7 +9,7 @@ type RouteComponent = React.StatelessComponent<RouteComponentProps<{}>> | React.
  * 로그인 페이지로 이동할 때 자신이 가지고 있는 JWT 값이 존재하면 대시보드로 이동
  * 향 후 JWT 유효 TOKEN 검증 API를 만들어야 한다. 
  */
-export const PrivateRoute = ({component, auth, ...rest}: {component:any, auth: User, [key: string]: any}) => {
+export const PrivateRoute = ({component, ...rest}: {component:any, [key: string]: any}) => {
     React.useEffect(() => {
         
     })

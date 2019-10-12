@@ -18,6 +18,10 @@ export const Gallery = (props: Props) => {
     const [open, setOpen] = React.useState(true)
     const classes = useStyles({});
 
+    React.useEffect(() => {
+      
+    })
+    
     setTimeout(() => {
         setOpen(false)
     }, 2000)

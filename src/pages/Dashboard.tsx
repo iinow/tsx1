@@ -4,7 +4,6 @@ import queryString from 'query-string'
 import { LoginParam } from '../models'
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { JsonUtil } from '../util'
-import { SchedulerToken } from '../common'
 import { RouteComponentProps, withRouter, Route, Link } from 'react-router-dom'
 import { ModalCircleProgress } from '../common/components'
 import clsx from 'clsx';
@@ -29,11 +28,13 @@ const useStyles = makeStyles(theme => ({
     '@global': {
         body: {
             backgroundColor: theme.palette.common.white,
-            margin: theme.spacing(0)
+            margin: theme.spacing(0),
+            height: '100vh'
         },
     },
     root: {
       display: 'flex',
+
     },
     appBar: {
       zIndex: theme.zIndex.drawer + 1,
@@ -89,6 +90,12 @@ const useStyles = makeStyles(theme => ({
     content: {
       flexGrow: 1,
       padding: theme.spacing(3),
+      height: '100%',
+      backgroundColor: '#EDEDED',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
     },
     title: {
       marginRight: 50
@@ -104,6 +111,11 @@ export const Dashboard = (props: Props) => {
     const classes = useStyles({});
     const urlPath = `/`
     
+    React.useEffect(() => {
+      let ac = new AbortController()
+      return () => ac.abort()
+    })
+
     setTimeout(() => {
         setProgressOpen(false)
     }, 2000)
@@ -117,7 +129,7 @@ export const Dashboard = (props: Props) => {
     };
 
     const handleHistoryPush = (path: string) => {
-        props.history.push(`${urlPath}${path}`)
+        props.history.push(`/${path}`)
     }
 
     return (
@@ -186,17 +198,15 @@ export const Dashboard = (props: Props) => {
                         ))}
                     </List>
                 </Drawer>
-                <main className={classes.content}>
+                <div className={classes.content}>
                     <div className={classes.toolbar} />
                     {/* 대시보드 내용 컨텐츠 부분 */}
-                    <Typography component={'div'} paragraph>
-                        <Route exact path="/" component={Main}/>
-                        <Route path="/memo" component={Memo}/>
-                        <Route path="/gallery" component={Gallery}/>
-                        <Route path="/chat" component={Chat}/>
-                        <Route path="/settings" component={Settings}/>
-                    </Typography>  
-                </main>
+                    <Route exact path="/" component={Main}/>
+                    <Route path="/memo" component={Memo}/>
+                    <Route path="/gallery" component={Gallery}/>
+                    <Route path="/chat" component={Chat}/>
+                    <Route path="/settings" component={Settings}/>
+                </div>
             </div>
             <ModalCircleProgress open={progressOpen}/>
         </div>

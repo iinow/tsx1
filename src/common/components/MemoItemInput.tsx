@@ -3,16 +3,13 @@ import { RouteComponentProps, withRouter } from 'react-router-dom'
 import queryString from 'query-string'
 import { makeStyles } from '@material-ui/core/styles';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import { Button, Checkbox, Divider, Card, CardActions, CardContent, Typography } from '@material-ui/core';
 import { MenuItem } from '../../models/'
-import Divider from '@material-ui/core/Divider';
+import { MemoCheckbox } from '../components'
 
 const useStyles = makeStyles({
     card: {
+        backgroundColor: '#FFFEF2',
         minWidth: 258,
         maxWidth: 258,
         minHeight: 300,
@@ -28,7 +25,17 @@ const useStyles = makeStyles({
       transform: 'scale(0.8)',
     },
     title: {
-      fontSize: 14,
+        minWidth: 230,
+        maxWidth: 230,
+        minHeight: 34,
+        maxHeight: 34,  
+        margin: 0
+    },
+    titleText:{
+        lineHeight: '34px',
+        fontSize: 11,
+        display: 'inline-block',
+        color: '#999'
     },
     pos: {
       marginBottom: 12,
@@ -78,7 +85,7 @@ export const MemoItemInput = (props: Props) => {
             <div className={classes.cardDate}>
                 {/* 날짜 */}
                 <Typography component={'div'} className={classes.title} color="textSecondary" gutterBottom>
-                    Word of the Day
+                    <Typography className={classes.titleText}>Word of the Day</Typography>
                 </Typography>
             </div>
             <Divider />

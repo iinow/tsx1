@@ -22,7 +22,6 @@ import Container from '@material-ui/core/Container';
 import OAuthButton from '../common/components/OAuthButton'
 import Axios from 'axios'
 import { User } from '../models'
-import { SchedulerToken } from '../common'
 
 function MadeWithLove() {
     return (
@@ -69,6 +68,13 @@ const LoginInner = (props: Props) => {
     React.useEffect(() => {
         if(localStorage.getItem('auth')){
             props.history.push('/')
+        }
+
+        const abortController = new AbortController()
+        const signal = abortController.signal
+
+        return function cleanup() {
+            abortController.abort()
         }
     })
 

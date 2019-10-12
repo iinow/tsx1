@@ -9,6 +9,7 @@ import { User } from './models'
 import { PrivateRoute } from './PrivateRoutes'
 import { observer, useObserver } from 'mobx-react'
 import { useObservable } from "mobx-react-lite";
+import './assets/scss/index.scss'
 
 const browserHistory = createBrowserHistory()
 
@@ -27,7 +28,8 @@ export const Routes = observer(() => {
       <Switch>
         <Route path="/login" component={Login}/>
         <Route path="/oauth2" component={redirect}/>
-        <PrivateRoute exact path="/" component={Dashboard} auth={user} />
+        {/* <Route path="/" component={Dashboard}/> */}
+        <PrivateRoute path="/" component={Dashboard}/>
       </Switch>
     </BrowserRouter>
   )

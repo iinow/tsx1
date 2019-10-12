@@ -18,6 +18,13 @@ export const Main = (props: Props) => {
     const [open, setOpen] = React.useState(true)
     const classes = useStyles({});
 
+    React.useEffect(() => {
+      let ac = new AbortController()
+      return function cleanup() {
+          ac.abort()
+      }
+    })
+
     setTimeout(() => {
         setOpen(false)
     }, 2000)

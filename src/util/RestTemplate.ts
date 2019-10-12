@@ -2,7 +2,6 @@ import Axios, { AxiosResponse } from 'axios'
 import { Config } from '../common/config'
 import { AuthorizeReq } from '../models/AuthorizeReq'
 import { StringUtil } from '../util/StringUtil'
-import {SchedulerToken} from '../common'
 
 export class RestTemplate {
     
@@ -14,6 +13,16 @@ export class RestTemplate {
     //         params: req
     //     })
     // }
+
+    public static init() {
+        Axios.create({
+            auth:{
+                password: 'admin',
+                username: 'admin'
+            },
+            
+        })
+    }
 
     public static async get_Profile() {
         const url = 'https://kapi.kakao.com/v1/api/talk/profile'

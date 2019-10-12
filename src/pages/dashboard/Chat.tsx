@@ -19,7 +19,7 @@ export const Chat = (props: Props) => {
     const classes = useStyles({});
     
     React.useEffect(() => {
-
+        
     })
 
     // setTimeout(() => {

@@ -10,6 +10,7 @@ import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles({
     card: {
+      backgroundColor: '#FFFEF2',
       minWidth: 258,
       maxWidth: 258,
       minHeight: 300,
@@ -25,11 +26,28 @@ const useStyles = makeStyles({
       transform: 'scale(0.8)',
     },
     title: {
-      fontSize: 14,
+      minWidth: 230,
+      maxWidth: 230,
+      minHeight: 34,
+      maxHeight: 34,  
+      margin: 0
+    },
+    titleText:{
+      lineHeight: '34px',
+      fontSize: 11,
+      display: 'inline-block',
+      color: '#999'
     },
     pos: {
       marginBottom: 12,
     },
+    cardDate: {
+      paddingTop: 3,
+      paddingRight: 14,
+      paddingLeft: 14,
+      // textAlign: "center"
+      transform: '-50%',
+    }
 });
 
 interface Props {
@@ -42,13 +60,14 @@ export default function Memo(props: Props) {
   
     return (
       <Card className={classes.card}>
+        <div className={classes.cardDate}>
+                {/* 날짜 */}
+                <Typography component={'div'} className={classes.title} color="textSecondary" gutterBottom>
+                    <Typography className={classes.titleText}>Word of the Day</Typography>
+                </Typography>
+        </div>
+        <Divider />
         <CardContent>
-          {/* 날짜 */}
-          <Typography className={classes.title} color="textSecondary" gutterBottom>
-            {1}
-          </Typography>
-          <Divider />
-          
           {/* 제목 */}
           {/* <Typography variant="h5" component="h2">
             {props.item.content}

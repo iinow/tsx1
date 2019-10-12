@@ -2,15 +2,12 @@ import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom'
 import queryString from 'query-string'
 import { makeStyles } from '@material-ui/core/styles';
+import { Typography } from '@material-ui/core';
 import { Memo as ComponentMemo, MemoItemInput } from '../../common/components'
 import { MenuItem } from '../../models'
 
 const useStyles = makeStyles(theme => ({
-    '@global': {
-        body: {
-            backgroundColor: theme.palette.common.white,
-            margin: theme.spacing(0)
-        },
+    root: {
     }
 }));
 
@@ -28,6 +25,10 @@ export const Memo = (props: Props) => {
     const forceUpdate = React.useCallback(() => updateState({}), []);
     const classes = useStyles({});
 
+    React.useEffect(() => {
+      
+    })
+    
     setTimeout(() => {
         setOpen(false)
     }, 2000)
@@ -37,7 +38,7 @@ export const Memo = (props: Props) => {
     }
 
     return (
-        <div>
+        <div className={classes.root}>
             <MemoItemInput items={list} refresh={forceUpdate}/>
                 {list.map((value, index) => (
                     <ComponentMemo key={index} item={value}/>
