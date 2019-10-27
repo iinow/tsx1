@@ -19,9 +19,10 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import OAuthButton from '../common/components/OAuthButton'
 import Axios from 'axios'
 import { User } from '../models'
+import { OAuthButton } from '../common/components'
+import { cookie } from '../common'
 
 function MadeWithLove() {
     return (
@@ -66,9 +67,12 @@ interface Props extends RouteComponentProps {
 
 const LoginInner = (props: Props) => {
     React.useEffect(() => {
-        if(localStorage.getItem('auth')){
+        if(cookie.read('auth')){
             props.history.push('/')
         }
+        // if(localStorage.getItem('auth')){
+        //     props.history.push('/')
+        // }
 
         const abortController = new AbortController()
         const signal = abortController.signal
@@ -80,11 +84,12 @@ const LoginInner = (props: Props) => {
 
     window.addEventListener("message", (e) => {
         const json: string = JSON.stringify(e.data)
-        if(typeof e.data == 'string'){
+        if(typeof e.data == 'string' && !e.data.startsWith("webpack")){
             console.log(json)
             console.log(e.data)
             // props.user.token = json
-            localStorage.setItem('auth', e.data)
+            cookie.write('auth', e.data)
+            // localStorage.setItem('auth', e.data)
             props.history.push("/")
         }
     })
@@ -175,15 +180,3 @@ const LoginInner = (props: Props) => {
 }
 
 export const Login = withRouter<Props, any>(LoginInner)
-
-
-// const router = useRouter()
-// const { location } = router
-// const query = JSON.stringify(queryString.parse(location.search))
-
-// let param: LoginParam = new LoginParam()
-// try{
-//     param = JsonUtil.parseJsonString(JSON.parse(query), LoginParam)
-// }catch(e){
-//     console.log(`Mapping failed: ${query}`)
-// }
