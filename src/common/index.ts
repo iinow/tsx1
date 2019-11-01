@@ -1,2 +1,2 @@
 export { ResourceType } from './define'
-export { cookie } from './cookieRepository'
+// export { cookie } from './cookieRepository'

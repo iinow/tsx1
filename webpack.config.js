@@ -22,7 +22,10 @@ class WebpackConfig {
   _path() {
     this.context = path.join(basePath, "src")
     this.resolve = {
-      extensions: [".js", ".ts", ".tsx"]
+      extensions: [".js", ".ts", ".tsx"],
+      alias: {
+        '@src': path.join(basePath, "src")
+      }
     }
     this.entry = ["@babel/polyfill", "./index.tsx"]
     this.output = {

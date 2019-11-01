@@ -22,7 +22,7 @@ import Container from '@material-ui/core/Container';
 import Axios from 'axios'
 import { User } from '../models'
 import { OAuthButton } from '../common/components'
-import { cookie } from '../common'
+// import { cookie } from '../common'
 
 function MadeWithLove() {
     return (
@@ -67,9 +67,9 @@ interface Props extends RouteComponentProps {
 
 const LoginInner = (props: Props) => {
     React.useEffect(() => {
-        if(cookie.read('auth')){
-            props.history.push('/')
-        }
+        // if(cookie.read('auth')){
+        //     props.history.push('/')
+        // }
         // if(localStorage.getItem('auth')){
         //     props.history.push('/')
         // }
@@ -88,7 +88,7 @@ const LoginInner = (props: Props) => {
             console.log(json)
             console.log(e.data)
             // props.user.token = json
-            cookie.write('auth', e.data)
+            // cookie.write('auth', e.data)
             // localStorage.setItem('auth', e.data)
             props.history.push("/")
         }

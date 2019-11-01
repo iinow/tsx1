@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { RouteComponentProps, withRouter, Route, Redirect, RouteProps } from 'react-router-dom'
 import queryString from 'query-string'
-import { User } from './models'
+import { User } from '@src/models'
 type RouteComponent = React.StatelessComponent<RouteComponentProps<{}>> | React.ComponentClass<any>
 
 /**
