@@ -6,6 +6,9 @@
   
 html {
   height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -13,6 +16,9 @@ html {
 body {
   background-color: #f4f6f8;
   height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 a {

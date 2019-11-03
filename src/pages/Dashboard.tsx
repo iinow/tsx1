@@ -19,7 +19,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { ChevronLeft, ChevronRight, Menu as MenuIcon } from '@material-ui/icons'
-import { Gallery, Main, Memo, Chat, Settings } from './dashboard/'
+import { Gallery, Main, Memo, Chat, Settings, HumorBoard } from './dashboard/'
 import { Config, findIconImage } from '../common/config'
 
 const drawerWidth = 240;
@@ -91,7 +91,8 @@ const useStyles = makeStyles(theme => ({
       flexGrow: 1,
       padding: theme.spacing(3),
       height: '100%',
-      backgroundColor: '#EDEDED',
+      width: '100%',
+      // backgroundColor: '#EDEDED',
       top: 0,
       left: 0,
       right: 0,
@@ -106,7 +107,7 @@ interface Props extends RouteComponentProps { }
 
 export const Dashboard = (props: Props) => {
     const [barOpen, setBarOpen] = React.useState(false)
-    const [progressOpen, setProgressOpen] = React.useState(true)
+    const [progressOpen, setProgressOpen] = React.useState(false)
     const theme = useTheme();
     const classes = useStyles({});
     const urlPath = `/`
@@ -206,6 +207,7 @@ export const Dashboard = (props: Props) => {
                     <Route path="/gallery" component={Gallery}/>
                     <Route path="/chat" component={Chat}/>
                     <Route path="/settings" component={Settings}/>
+                    <Route path="/humor" component={HumorBoard}/>
                 </div>
             </div>
             <ModalCircleProgress open={progressOpen}/>

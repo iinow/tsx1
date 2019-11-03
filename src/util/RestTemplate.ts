@@ -1,7 +1,9 @@
 import Axios, { AxiosResponse } from 'axios'
-import { Config } from '../common/config'
-import { AuthorizeReq } from '../models/AuthorizeReq'
-import { StringUtil } from '../util/StringUtil'
+import { Config } from '@src/common/config'
+import { AuthorizeReq } from '@src/models/AuthorizeReq'
+import { StringUtil } from '@src/util/StringUtil'
+import { Pageable, createPageable } from '@src/request'
+import * as data from '@src/common/config/data.json'
 
 export class RestTemplate {
     
@@ -22,6 +24,15 @@ export class RestTemplate {
             },
             
         })
+    }
+
+    public static async get_BoardHumors(sort: Pageable){
+        const url = `${data.api.avin.url}/boards/humors`
+        let res = await Axios.get(url, {
+            params: sort
+        })
+
+        return res.data
     }
 
     public static async get_Profile() {

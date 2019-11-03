@@ -42,6 +42,10 @@
             {
                 "name": "chat",
                 "icon": 3
+            },
+            {
+                "name": "humor",
+                "icon": 3
             }
         ],
         "menuBottom": [
@@ -50,5 +54,10 @@
                 "icon": 4
             }
         ]
+    },
+    "api": {
+        "avin": {
+            "url": "http://localhost:8080"
+        }
     }
 }

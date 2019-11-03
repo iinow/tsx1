@@ -42,7 +42,7 @@ class WebpackConfig {
   _dev() {
     this.devtool = "source-map"
     this.devServer = {
-      contentBase: "./dist", // Content base
+      contentBase: "./build", // Content base
       inline: true, // Enable watch and live reload,
       compress: true,
       host: "localhost",

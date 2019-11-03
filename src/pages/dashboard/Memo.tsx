@@ -8,8 +8,13 @@ import { MenuItem } from '../../models'
 
 const useStyles = makeStyles(theme => ({
     root: {
+        backgroundColor: '#EDEDED',
     }
 }));
+
+const style: React.CSSProperties = {
+    // backgroundColor: '#EDEDED'
+}
 
 interface Props extends RouteComponentProps { }
 
@@ -38,7 +43,7 @@ export const Memo = (props: Props) => {
     }
 
     return (
-        <div className={classes.root}>
+        <div style={style}>
             <MemoItemInput items={list} refresh={forceUpdate}/>
                 {list.map((value, index) => (
                     <ComponentMemo key={index} item={value}/>
